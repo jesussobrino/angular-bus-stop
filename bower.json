@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "name": "angular-bus-stop-app",
+  "description": "Bus departures app with AngularJS",
+  "repository": "https://github.com/jesussobrino/angular-bus-stop",
+  "dependencies": {
+    "angular": "1.5.x",
+    "angular-route": "1.5.x",
+    "angular-resource": "1.5.x",
+    "angular-google-maps": "~2.3.2",
+    "bootstrap": "~3.1.1",
+    "jquery": "~2.1.4"
+  }
+}

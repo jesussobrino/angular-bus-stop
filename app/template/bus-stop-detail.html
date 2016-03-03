@@ -1,0 +1,33 @@
+<bus-stop-header></bus-stop-header>
+
+<div class="container">
+    <h2>Departures Timetable in {{routeParams.busStopName}}</h2>
+
+    <table class="table" ng-if="busStopDepartures.arrivals.length > 0">
+        <thead>
+        <tr>
+            <th>Route Name</th>
+            <th>Destination</th>
+            <th>Estimated Wait</th>
+            <th>Scheduled Time</th>
+            <th>Real time?</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="arrival in busStopDepartures.arrivals">
+            <td>{{arrival.routeName}}</td>
+            <td>{{arrival.destination}}</td>
+            <td>{{arrival.estimatedWait}}</td>
+            <td>{{arrival.scheduledTime}}</td>
+            <td>{{arrival.isRealTime ? 'Yes' : 'No'}}</td>
+            <td>{{arrival.isCancelled ? 'Cancelled' : 'Available'}}</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <p ng-if="busStopDepartures.arrivals.length === 0">Sorry. There are not arrivals available in {{routeParams.busStopName}}</p>
+
+    <p><strong>Updated at: {{busStopDepartures.lastUpdated}}</strong></p>
+</div>

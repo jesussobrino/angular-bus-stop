@@ -1,0 +1,76 @@
+<bus-stop-header></bus-stop-header>
+
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-4 sidenav bus--list">
+            <ul class="nav nav-pills nav-stacked bus-list">
+                <li ng-repeat="marker in markers">
+                    <a href="#/bus-detail/{{marker.id}}/{{marker.name}}">
+                        <span>{{marker.name}}</span>
+                        <span ng-if="marker.stopIndicator">(Stop {{marker.stopIndicator}})</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-sm-8 text-left">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label class="sr-only" for="northEastLat">NorthEast Lat</label>
+                    <input type="text" class="form-control" id="northEastLat" placeholder="NorthEast Lat" ng-model="coordinatesToBound.northEast.lat">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="northEastLong">NorthEast Long</label>
+                    <input type="text" class="form-control" id="northEastLong" placeholder="NorthEast Long" ng-model="coordinatesToBound.northEast.long">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="southWestLat">SouthWest Lat</label>
+                    <input type="text" class="form-control" id="southWestLat" placeholder="SouthWest Lat" ng-model="coordinatesToBound.southWest.lat">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="southWestLong">SouthWest Long</label>
+                    <input type="text" class="form-control" id="southWestLong" placeholder="SouthWest Long" ng-model="coordinatesToBound.southWest.long">
+                </div>
+
+                <button type="submit" class="btn btn-default">Update</button>
+            </form>
+
+            <ui-gmap-google-map center='map.center' zoom='map.zoom' control="map.control">
+                <ui-gmap-window
+                        show="map.window.show"
+                        coords="map.window.model"
+                        options="map.window.options"
+                        closeClick="map.window.closeClick()"
+                        templateParameter="map.window">
+                    <div>
+                        <h5>
+                            <img height="15" width="15"
+                                 src="https://maps.gstatic.com/mapfiles/transit/iw2/b/uk-london-bus.png">
+                            <strong>
+                                <span>{{map.window.model.name}}</span>
+                                <span>{{map.window.model.stopIndicator ? '(Stop '+map.window.model.stopIndicator+ ')' : ''}}</span>
+                            </strong>
+                        </h5>
+                        <p><strong>Towards:</strong> {{map.window.model.towards}}</p>
+                        <p><strong>SMS Code:</strong> {{map.window.model.smsCode}}</p>
+                        <p><strong>Direction:</strong> {{map.window.model.direction}}</p>
+                        <a href="#/bus-detail/{{map.window.model.id}}/{{map.window.model.name}}">See departures
+                            timetable</a>
+                    </div>
+
+                </ui-gmap-window>
+                <ui-gmap-markers models="markers"
+                                 coords="'self'"
+                                 events="map.markersEvents"
+                                 icon="'icon'">
+                </ui-gmap-markers>
+            </ui-gmap-google-map>
+        </div>
+    </div>
+</div>
+
+<footer class="container-fluid text-center podcast--footer">
+    <hr>
+    <p>Source code available on <a href="https://github.com/jesussobrino/angular-bus-stop">https://github.com/jesussobrino/angular-bus-stop</a>
+    </p>
+</footer>
