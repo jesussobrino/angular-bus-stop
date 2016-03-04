@@ -3,20 +3,7 @@
 <div class="container-fluid">
     <div class="row content">
         <div class="col-sm-4 sidenav bus--list">
-            <div class="form-inline">
-                <div class="form-group">
-                    <label class="sr-only" for="searchInput">Search</label>
-                    <input type="text" class="form-control" id="searchInput" placeholder="Search" ng-model="query">
-                </div>
-                <div class="form-group">
-                    <label class="sr-only" for="searchInput">Order By</label>
-                    <select class="form-control" ng-model="orderByProperty">
-                        <option value="name">Name</option>
-                        <option value="towards">Towards</option>
-                        <option value="direction">Direction</option>
-                    </select>
-                </div>
-            </div>
+            <bus-list-filter query="query" order="orderByProperty"></bus-list-filter>
             <ul class="nav nav-pills nav-stacked bus-list">
                 <li ng-repeat="marker in markers | filter:query | orderBy:orderByProperty">
                     <a href="#/bus-detail/{{marker.id}}/{{marker.name}}">

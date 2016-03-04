@@ -17,3 +17,14 @@ busStopDirectives.directive('coordinatesForm', function () {
         templateUrl: 'template/coordinates-form.html'
     };
 });
+
+busStopDirectives.directive('busListFilter', function () {
+    return {
+        restrict: 'E',
+        templateUrl: 'template/bus-list-filter.html',
+        scope: {
+            query: '=',
+            order: '='
+        }
+    };
+});
