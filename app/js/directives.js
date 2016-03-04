@@ -28,3 +28,17 @@ busStopDirectives.directive('busListFilter', function () {
         }
     };
 });
+
+busStopDirectives.directive('busStopMap', function () {
+    return {
+        restrict: 'E',
+        templateUrl: 'template/bus-stop-map.html'
+    };
+});
+
+busStopDirectives.directive('busListMenu', function () {
+    return {
+        restrict: 'E',
+        templateUrl: 'template/bus-list-menu.html'
+    };
+});

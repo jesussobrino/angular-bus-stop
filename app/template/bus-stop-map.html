@@ -1,0 +1,29 @@
+<ui-gmap-google-map center='map.center' zoom='map.zoom' control="map.control">
+    <ui-gmap-window
+            show="map.window.show"
+            coords="map.window.model"
+            options="map.window.options"
+            closeClick="map.window.closeClick()"
+            templateParameter="map.window">
+        <div>
+            <h5>
+                <img height="15" width="15"
+                     src="https://maps.gstatic.com/mapfiles/transit/iw2/b/uk-london-bus.png">
+                <strong>
+                    <span>{{map.window.model.name}}</span>
+                    <span>{{map.window.model.stopIndicator ? '(Stop '+map.window.model.stopIndicator+ ')' : ''}}</span>
+                </strong>
+            </h5>
+            <p><strong>Towards:</strong> {{map.window.model.towards}}</p>
+            <p><strong>SMS Code:</strong> {{map.window.model.smsCode}}</p>
+            <p><strong>Direction:</strong> {{map.window.model.direction}}</p>
+            <a href="#/bus-detail/{{map.window.model.id}}/{{map.window.model.name}}">See departures timetable</a>
+        </div>
+
+    </ui-gmap-window>
+    <ui-gmap-markers models="markers"
+                     coords="'self'"
+                     events="map.markersEvents"
+                     icon="'icon'">
+    </ui-gmap-markers>
+</ui-gmap-google-map>

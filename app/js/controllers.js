@@ -38,9 +38,8 @@ busStopControllers.controller('BusStopCtrl', ['$scope', 'busService', 'uiGmapGoo
         };
 
         $scope.updateCoordinates = function () {
-            var bounds = new google.maps.LatLngBounds();
-
             busService.getBusStops($scope.coordinatesToBound).then(function (busInfo) {
+                var bounds = new google.maps.LatLngBounds();
                 angular.forEach(busInfo.data.markers, function (marker) {
                     marker.latitude = marker.lat;
                     marker.longitude = marker.lng;

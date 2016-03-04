@@ -1,0 +1,9 @@
+<bus-list-filter query="query" order="orderByProperty"></bus-list-filter>
+<ul class="nav nav-pills nav-stacked bus-list">
+    <li ng-repeat="marker in markers | filter:query | orderBy:orderByProperty">
+        <a href="#/bus-detail/{{marker.id}}/{{marker.name}}">
+            <span>{{marker.name}}</span>
+            <span ng-if="marker.stopIndicator">(Stop {{marker.stopIndicator}})</span>
+        </a>
+    </li>
+</ul>
