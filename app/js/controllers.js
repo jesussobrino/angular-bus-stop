@@ -4,8 +4,9 @@
 
 var busStopControllers = angular.module('busStopControllers', []);
 
-busStopControllers.controller('BusStopCtrl', ['$scope', 'busService', 'uiGmapGoogleMapApi', '$window',
-    function ($scope, busService, uiGmapGoogleMapApi, $window) {
+busStopControllers.controller('BusStopCtrl', ['$scope', 'busService', 'uiGmapGoogleMapApi',
+    function ($scope, busService, uiGmapGoogleMapApi) {
+        $scope.orderByProperty = 'name';
         $scope.markers = [];
         $scope.map = {
             center: {latitude: 51.52, longitude: -0.08}, control: {}, zoom: 14,
