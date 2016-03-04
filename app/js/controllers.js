@@ -37,8 +37,7 @@ busStopControllers.controller('BusStopCtrl', ['$scope', 'busService', 'uiGmapGoo
             }
         };
 
-        uiGmapGoogleMapApi.then(function (maps) {
-            console.log('Google Maps API version: ', maps.version);
+        $scope.updateCoordinates = function () {
             var bounds = new google.maps.LatLngBounds();
 
             busService.getBusStops($scope.coordinatesToBound).then(function (busInfo) {
@@ -51,6 +50,11 @@ busStopControllers.controller('BusStopCtrl', ['$scope', 'busService', 'uiGmapGoo
 
                 $scope.map.control.getGMap().fitBounds(bounds);
             });
+        };
+
+        uiGmapGoogleMapApi.then(function (maps) {
+            console.log('Google Maps API version: ', maps.version);
+            $scope.updateCoordinates();
         });
 
     }]);
