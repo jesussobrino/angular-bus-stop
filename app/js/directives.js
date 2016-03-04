@@ -7,7 +7,7 @@ var busStopDirectives = angular.module('busStopDirectives', []);
 busStopDirectives.directive('busStopHeader', function () {
     return {
         restrict: 'E',
-        templateUrl: 'template/header.html'
+        templateUrl: 'template/bus-stop-header.html'
     };
 });
 
