@@ -4,8 +4,8 @@
 
 var busStopControllers = angular.module('busStopControllers', []);
 
-busStopControllers.controller('BusStopCtrl', ['$scope', 'busService', 'uiGmapGoogleMapApi',
-    function ($scope, busService, uiGmapGoogleMapApi) {
+busStopControllers.controller('BusStopCtrl', ['$scope', 'busService', 'uiGmapGoogleMapApi', '$window',
+    function ($scope, busService, uiGmapGoogleMapApi, $window) {
         $scope.orderByProperty = 'name';
         $scope.markers = [];
         $scope.map = {
@@ -37,23 +37,32 @@ busStopControllers.controller('BusStopCtrl', ['$scope', 'busService', 'uiGmapGoo
             }
         };
 
-        $scope.updateCoordinates = function () {
-            busService.getBusStops($scope.coordinatesToBound).then(function (busInfo) {
-                var bounds = new google.maps.LatLngBounds();
-                angular.forEach(busInfo.data.markers, function (marker) {
-                    marker.latitude = marker.lat;
-                    marker.longitude = marker.lng;
-                    bounds.extend(new google.maps.LatLng(marker.latitude, marker.longitude));
-                    this.push(marker);
-                }, $scope.markers);
+        $scope.updateCoordinates = function (validForm) {
+            if (!validForm) {
+                $window.alert('Please, insert valid values.');
+                return
+            }
+            busService.getBusStops($scope.coordinatesToBound)
+                .then(function (busInfo) {
+                    var bounds = new google.maps.LatLngBounds();
+                    angular.forEach(busInfo.data.markers, function (marker) {
+                        marker.latitude = marker.lat;
+                        marker.longitude = marker.lng;
+                        bounds.extend(new google.maps.LatLng(marker.latitude, marker.longitude));
+                        this.push(marker);
+                    }, $scope.markers);
 
-                $scope.map.control.getGMap().fitBounds(bounds);
-            });
+                    $scope.map.control.getGMap().fitBounds(bounds);
+                })
+                .catch(function (error) {
+                    $window.alert('Please, insert valid values.');
+                    console.log('error', error);
+                });
         };
 
         uiGmapGoogleMapApi.then(function (maps) {
             console.log('Google Maps API version: ', maps.version);
-            $scope.updateCoordinates();
+            $scope.updateCoordinates(true);
         });
 
     }]);
