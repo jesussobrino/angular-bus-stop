@@ -26,7 +26,7 @@ npm install
 ### Running the app
 
 - Run `npm start`
-- Navigate your browser to `http://localhost:8000/app/index.html` to see the app running in your browser.
+- Navigate your browser to `http://localhost:8000/app` to see the app running in your browser.
 
 
 [node-download-url]: https://nodejs.org/en/download/
