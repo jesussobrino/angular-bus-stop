@@ -12,7 +12,6 @@ busStopControllers.controller('BusStopCtrl', ['$scope', 'busService', 'uiGmapGoo
             center: {latitude: 51.52, longitude: -0.08}, control: {}, zoom: 14,
             markersEvents: {
                 click: function (marker, eventName, model) {
-                    console.log('Click marker', model);
                     $scope.map.window.model = model;
                     $scope.map.window.show = true;
                 }
@@ -49,7 +48,6 @@ busStopControllers.controller('BusStopCtrl', ['$scope', 'busService', 'uiGmapGoo
                     bounds.extend(new google.maps.LatLng(marker.latitude, marker.longitude));
                     this.push(marker);
                 }, $scope.markers);
-                console.log('Markers: ', $scope.markers);
 
                 $scope.map.control.getGMap().fitBounds(bounds);
             });

@@ -20,7 +20,3 @@ body {
 .row.content .form-inline {
     padding-bottom: 15px;
 }
-
-.form-inline .form-group input {
-    /*max-width: 150px;*/
-}
