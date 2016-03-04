@@ -10,3 +10,10 @@ busStopDirectives.directive('busStopHeader', function () {
         templateUrl: 'template/header.html'
     };
 });
+
+busStopDirectives.directive('coordinatesForm', function () {
+    return {
+        restrict: 'E',
+        templateUrl: 'template/coordinates-form.html'
+    };
+});

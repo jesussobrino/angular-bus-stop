@@ -28,31 +28,7 @@
         </div>
 
         <div class="col-sm-8 text-left">
-            <form class="form-inline">
-                <div class="form-group">
-                    <label class="sr-only" for="northEastLat">NorthEast Latitude</label>
-                    <input type="text" class="form-control" id="northEastLat" placeholder="NorthEast Latitude"
-                           ng-model="coordinatesToBound.northEast.lat" title="NorthEast Latitude">
-                </div>
-                <div class="form-group">
-                    <label class="sr-only" for="northEastLong">NorthEast Longitude</label>
-                    <input type="text" class="form-control" id="northEastLong" placeholder="NorthEast Longitude"
-                           ng-model="coordinatesToBound.northEast.long" title="NorthEast Longitude">
-                </div>
-                <div class="form-group">
-                    <label class="sr-only" for="southWestLat">SouthWest Latitude</label>
-                    <input type="text" class="form-control" id="southWestLat" placeholder="SouthWest Latitude"
-                           ng-model="coordinatesToBound.southWest.lat" title="SouthWest Latitude">
-                </div>
-                <div class="form-group">
-                    <label class="sr-only" for="southWestLong">SouthWest Long</label>
-                    <input type="text" class="form-control" id="southWestLong" placeholder="SouthWest Longitude"
-                           ng-model="coordinatesToBound.southWest.long" title="SouthWest Longitude">
-                </div>
-
-                <button type="submit" class="btn btn-default" ng-click="updateCoordinates()">Update</button>
-            </form>
-
+            <coordinates-form></coordinates-form>
             <ui-gmap-google-map center='map.center' zoom='map.zoom' control="map.control">
                 <ui-gmap-window
                         show="map.window.show"
@@ -72,8 +48,7 @@
                         <p><strong>Towards:</strong> {{map.window.model.towards}}</p>
                         <p><strong>SMS Code:</strong> {{map.window.model.smsCode}}</p>
                         <p><strong>Direction:</strong> {{map.window.model.direction}}</p>
-                        <a href="#/bus-detail/{{map.window.model.id}}/{{map.window.model.name}}">See departures
-                            timetable</a>
+                        <a href="#/bus-detail/{{map.window.model.id}}/{{map.window.model.name}}">See departures timetable</a>
                     </div>
 
                 </ui-gmap-window>
